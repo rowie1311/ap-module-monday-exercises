@@ -4,62 +4,164 @@ using namespace std;
 
 int main() {
   
-  std::cout << "\nWelcome to Primer 1 - Farenheit/Celcius converter" << endl;
- 
-  float temperature, fahrenheit, celsius, kelvin, newtemp1, newtemp2;
-  int option, option2;
+  	std::cout << "\nWelcome to Primer 2:\nNumber guessing game" << endl;
+  {
+	int num, guess, tries = 0, difficulty;
+  cout << "Please select a Level of difficulty (1, 2 or 3): ";
+  cin >> difficulty;
+     while(1)
+      {
+        if(cin.fail())
+        {
+         cin.clear();
+         cin.ignore(numeric_limits<streamsize>::max(),'\n');
+         cout<<"Please enter an integer"<<endl;
+         tries++; 
+         cin >> guess;
+        }
+       if(!cin.fail()) {
+        break;
+       }
+      }
+	
+  if (difficulty == 1) {
+  srand(time(0)); 
+	num = rand() % 10 + 1; 
+	cout << "Guess My Number Game\n\n";
+  do
+	{
+		cout << "Enter a guess between 1 and 10 : ";
+		cin >> guess;
+    
+      while(1)
+      {
+        if(cin.fail())
+        {
+         cin.clear();
+         cin.ignore(numeric_limits<streamsize>::max(),'\n');
+         cout<<"Please enter an integer"<<endl;
+         tries++; 
+         cin >> guess;
+        }
+       if(!cin.fail()) {
+        break;
+       }
+      }
+    
+    tries++;
 
-  cout << "Enter your temperature: ";
-  cin >> temperature;
-  cout << "Is that is Celcius(1), Farenheit(2) or Kelvin(3)?: ";
-  cin >> option;
-  cout << "Would you like to convert it to Farenheit(1), Celcius(2) or Kelvin(3)?: ";
-  cin >> option2;
+		if (guess > num)
+			cout << "Too high!\n\n";
+		else if (guess < num)
+			cout << "Too low!\n\n";
+		else
+			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+	} 
+      while(1)  
+        switch(tries) 
+      {
+        case 1: cout << "Wow, are you a mind reader?!?"; break;
+        case 2 ... 4: cout << "Well done, most impressive"; break;
+        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
+        default: cout << "Better luck next time!"; break;
+      }
+  while (guess != num);
+  return 0;
+  }
 
-  
-    if (option == 1 && option2 == 1) 
+
+  else if (difficulty == 2) {
+  srand(time(0)); 
+	num = rand() % 100 + 1; 
+	cout << "Guess My Number Game\n\n";
+  do
+	{
+		cout << "Enter a guess between 1 and 100 : ";
+		cin >> guess;
+
+         while(1)
+      {
+        if(cin.fail())
+        {
+         cin.clear();
+         cin.ignore(numeric_limits<streamsize>::max(),'\n');
+         cout<<"Please enter an integer"<<endl;
+         tries++; 
+         cin >> guess;
+        }
+       if(!cin.fail()) {
+        break;
+       }
+      }
+		tries++;
+
+		if (guess > num)
+			cout << "Too high!\n\n";
+		else if (guess < num)
+			cout << "Too low!\n\n";
+		else
+			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+      switch(tries) 
+      {
+        case 1: cout << "Wow, are you a mind reader?!?"; break;
+        case 2 ... 4: cout << "Well done, most impressive"; break;
+        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
+        default: cout << "Better luck next time!"; break;
+      }
+	} while (guess != num);
+  return 0;
+  }
+
+
+  else if (difficulty == 3) {
+      srand(time(0)); 
+	num = rand() % 1000 + 1; 
+	cout << "Guess My Number Game\n\n";
+  do
+	{
+		cout << "Enter a guess between 1 and 1000 : ";
+		cin >> guess;
+         while(1)
+      {
+        if(cin.fail())
+        {
+         cin.clear();
+         cin.ignore(numeric_limits<streamsize>::max(),'\n');
+         cout<<"Please enter an integer"<<endl;
+         tries++; 
+         cin >> guess;
+        }
+       if(!cin.fail()) {
+        break;
+       }
+      }
+
+		tries++;
+
+		if (guess > num)
+			cout << "Too high!\n\n";
+		else if (guess < num)
+			cout << "Too low!\n\n";
+		else
+			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+      switch(tries) 
+      {
+        case 1: cout << "Wow, are you a mind reader?!?"; break;
+        case 2 ... 4: cout << "Well done, most impressive"; break;
+        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
+        default: cout << "Better luck next time!"; break;
+      }
+
+	} while (guess != num);
+  return 0;
+  }
+
+  else 
     {
-      newtemp1 = (temperature * 9/5) + 32;
-      cout << "The temperature in Celsius : " << temperature << endl;
-      cout << "The temperature in Fahrenheit : " << newtemp1 << endl;
-    }
-    else if (option == 1 && option2 == 3) 
-    {
-      newtemp1 = temperature + 273.15;
-      cout << "The temperature in Celsius : " << temperature << endl;
-      cout << "The temperature in Kelvin : " << newtemp1 << endl;
-    }
-    else if (option == 2 && option2 == 2)
-    {
-      newtemp1 =(temperature - 32)* 5/9;
-      cout << "The temperature in Farenheit : " << temperature << endl;
-      cout << "The temperature in Celcius : " << newtemp1 << endl;
-    }
-    else if (option == 2 && option2 == 3)
-    {
-      newtemp1 =(temperature - 32) * 5/9;
-      newtemp2 = newtemp1 + 273.15;
-      cout << "The temperature in Farenheit : " << temperature << endl;
-      cout << "The temperature in Kelvin : " << newtemp2 << endl; 
-    }
-      else if (option == 3 && option2 == 2)
-    {
-      newtemp1 = temperature - 273.15;
-      cout << "The temperature in Kelvin : " << temperature << endl;
-      cout << "The temperature in Celcius : " << newtemp1 << endl;
-    }
-    else if (option == 3 && option2 == 1)
-    {
-      newtemp1 = temperature - 273.15;
-      newtemp2 = (newtemp1 * 9/5) + 32;
-      cout << "The temperature in Kelvin : " << temperature << endl;
-      cout << "The temperature in Farenheit : " << newtemp2 << endl;
-    }
-    else 
-    {
-      std::cout << "\n' Is an invalid option  - please try again.";
+    
+      std::cout << "\n Invalid Option  - Please Try Again.";
       
       return 0;
     }
+  }
 }
-  

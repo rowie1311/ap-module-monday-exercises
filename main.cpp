@@ -2,29 +2,33 @@
 #include <string>
 using namespace std;
 
-int main() {
+int main() 
+{
   
   	std::cout << "\nWelcome to Primer 2:\nNumber guessing game" << endl;
+
   {
-	int num, guess, tries = 0, difficulty;
-  cout << "Please select a Level of difficulty (1, 2 or 3): ";
-  cin >> difficulty;
-     while(1)
+	 int num, guess, tries = 0, difficulty;
+
+   cout << "Please select a level of difficulty (1, 2 or 3): ";
+   cin >> difficulty;
+    while(1)
+    {
+      if(cin.fail())
       {
-        if(cin.fail())
-        {
-         cin.clear();
-         cin.ignore(numeric_limits<streamsize>::max(),'\n');
-         cout<<"Please enter an integer"<<endl;
-         tries++; 
-         cin >> guess;
-        }
-       if(!cin.fail()) {
-        break;
-       }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout<<"Please enter an integer"<<endl;
+        cin >> difficulty;
       }
+      if(!cin.fail()) 
+        {
+          break;
+        }
+    }
 	
-  if (difficulty == 1) {
+  if (difficulty == 1) 
+  {
   srand(time(0)); 
 	num = rand() % 10 + 1; 
 	cout << "Guess My Number Game\n\n";
@@ -43,9 +47,10 @@ int main() {
          tries++; 
          cin >> guess;
         }
-       if(!cin.fail()) {
-        break;
-       }
+        if(!cin.fail()) 
+        {
+         break;
+        }
       }
     
     tries++;
@@ -54,23 +59,28 @@ int main() {
 			cout << "Too high!\n\n";
 		else if (guess < num)
 			cout << "Too low!\n\n";
-		else
-			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
-	} 
-      while(1)  
-        switch(tries) 
+		else 
+    {
+      switch(tries) 
       {
-        case 1: cout << "Wow, are you a mind reader?!?"; break;
-        case 2 ... 4: cout << "Well done, most impressive"; break;
-        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
-        default: cout << "Better luck next time!"; break;
+        case 1: cout << "Wow, are you a mind reader?!?\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        case 2 ... 4: cout << "Well done, most impressive\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        case 5 ... 7: cout << "Good, but I'm sure you can do better!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        default: cout << "You got it but try again to get a higher score!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
       }
+    }
+	} 
+ 
   while (guess != num);
-  return 0;
+    return 0;
   }
 
 
-  else if (difficulty == 2) {
+  else if (difficulty == 2)
+  {
   srand(time(0)); 
 	num = rand() % 100 + 1; 
 	cout << "Guess My Number Game\n\n";
@@ -79,49 +89,60 @@ int main() {
 		cout << "Enter a guess between 1 and 100 : ";
 		cin >> guess;
 
-         while(1)
+    while(1)
+    {
+      if(cin.fail())
       {
-        if(cin.fail())
-        {
-         cin.clear();
-         cin.ignore(numeric_limits<streamsize>::max(),'\n');
-         cout<<"Please enter an integer"<<endl;
-         tries++; 
-         cin >> guess;
-        }
-       if(!cin.fail()) {
-        break;
-       }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+        cout<<"Please enter an integer"<<endl;
+        tries++; 
+        cin >> guess;
       }
+      if(!cin.fail()) 
+      {
+        break;
+      }
+    }
 		tries++;
 
-		if (guess > num)
+		if (guess > num) 
+    {
 			cout << "Too high!\n\n";
-		else if (guess < num)
+    }
+		else if (guess < num) 
+    {
 			cout << "Too low!\n\n";
-		else
-			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
-      switch(tries) 
+    }
+		else 
+    {
+		  switch(tries) 
       {
-        case 1: cout << "Wow, are you a mind reader?!?"; break;
-        case 2 ... 4: cout << "Well done, most impressive"; break;
-        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
-        default: cout << "Better luck next time!"; break;
+        case 1: cout << "Wow, are you a mind reader?!?\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        case 2 ... 4: cout << "Well done, most impressive\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        case 5 ... 7: cout << "Good, but I'm sure you can do better!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+
+        default: cout << "You got it but try again to get a higher score!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
       }
-	} while (guess != num);
-  return 0;
+    }
+	} 
+    while (guess != num);
+      return 0;
   }
 
 
-  else if (difficulty == 3) {
-      srand(time(0)); 
-	num = rand() % 1000 + 1; 
-	cout << "Guess My Number Game\n\n";
+  else if (difficulty == 3)
+  {
+    srand(time(0)); 
+	  num = rand() % 1000 + 1; 
+	  cout << "Guess My Number Game\n\n";
   do
-	{
+	 {
 		cout << "Enter a guess between 1 and 1000 : ";
 		cin >> guess;
-         while(1)
+      while(1)
       {
         if(cin.fail())
         {
@@ -131,29 +152,35 @@ int main() {
          tries++; 
          cin >> guess;
         }
-       if(!cin.fail()) {
-        break;
+       if(!cin.fail()) 
+       {
+          break;
        }
       }
 
 		tries++;
 
 		if (guess > num)
+    {
 			cout << "Too high!\n\n";
+    }
 		else if (guess < num)
+    {
 			cout << "Too low!\n\n";
-		else
-			cout << "\nCorrect! You got it in " << tries << " guesses!\n";
+    }
+		else 
+    {
       switch(tries) 
       {
-        case 1: cout << "Wow, are you a mind reader?!?"; break;
-        case 2 ... 4: cout << "Well done, most impressive"; break;
-        case 5 ... 7: cout << "Good, but I'm sure you can do better!"; break;
-        default: cout << "Better luck next time!"; break;
+      case 1: cout << "Wow, are you a mind reader?!?\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again"; break;
+      case 2 ... 4: cout << "Well done, most impressive\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again."; break;
+      case 5 ... 7: cout << "Good, but I'm sure you can do better!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again."; break;
+      default: cout << "You got it but try again to get a higher score!\n" << "You guessed " << num << " in: " << tries << " tries.\n\nRestart program to play again."; break;
       }
+    }
 
-	} while (guess != num);
-  return 0;
+	 }  while (guess != num);
+       return 0;
   }
 
   else 
